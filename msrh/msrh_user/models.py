@@ -57,7 +57,7 @@ class EMPLOYEE(models.Model):
     Eid = models.CharField(max_length=10, null=True, blank=True)
     name = models.CharField(max_length=1000, primary_key=True)
     department = models.ForeignKey(DEPARTMENT,blank=True, null=True)
-    trainings = models.ManyToManyField(Training)
+    trainings = models.ManyToManyField(Training,blank=True, null=True)
 
     def __str__(self):
         return self.Eid
@@ -71,7 +71,7 @@ class Pending_Trainings(models.Model):
     name = models.CharField(max_length=100,blank=True,null=True)
     dept = models.CharField(max_length=10,blank=True,null=True)
     emp_count = models.IntegerField(blank=True,null=True)
-    emp_list = models.ManyToManyField(Names)
+    emp_list = models.ManyToManyField(Names,blank=True, null=True)
 
     def __str__(self):
         return self.name
