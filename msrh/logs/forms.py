@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django import forms
 # If you don't do this you cannot use Bootstrap CSS
+
+
 class LoginForm(AuthenticationForm):
     type_1 = 'HOD'
     type_2 = 'HR'
