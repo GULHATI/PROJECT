@@ -75,3 +75,16 @@ class Pending_Trainings(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CommonTrainings(models.Model):
+    name = models.CharField(max_length=20, primary_key=True)
+    department = models.ForeignKey(DEPARTMENT, blank=True, null=True)
+    venue = models.CharField(max_length=20, blank=True, null=True)
+    date = models.DateField(blank=True, null=True)
+    time = models.TimeField(blank=True, null=True)
+    topic = models.CharField(max_length=20, blank=True, null=True)
+    head_of_program = models.CharField(max_length=20, blank=True, null=True)
+
+    def __str__(self):
+        return self.name
