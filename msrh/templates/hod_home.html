@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style xmlns="http://www.w3.org/1999/html">
+.btn-sq-lg {
+  width: 150px !important;
+  height: 150px !important;
+    margin: 10px;
+}
+
+.btn-sq {
+  width: 100px !important;
+  height: 100px !important;
+  font-size: 10px;
+}
+
+.btn-sq-sm {
+  width: 50px !important;
+  height: 50px !important;
+  font-size: 10px;
+}
+
+.btn-sq-xs {
+  width: 25px !important;
+  height: 25px !important;
+  padding:2px;
+}
+
+
+</style>
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h1>Hello, <strong>You are logged in as HOD</strong></h1><br>
+            <p>You are on your Dashboard</p>
+        </div>
+    </div>
+</div>
+<div class="col-md-1">
+    </div>
+<div class="col-md-3">
+    <div class="row">
+        <label style="font-size: larger"><strong>NAME  : {{ HOD_name }}</strong></label><br><br>
+    </div>
+    <div class="row">
+        <label style="font-size: larger"><strong>EMPLOYEE ID  :  {{ HOD_Eid }}</strong></label><br><br>
+    </div>
+    <div class="row">
+        <label style="font-size: larger"><strong>DEPARTMENT :  {{ HOD_dept }}</strong></label><br><br>
+    </div>
+    <div class="row">
+        <label style="font-size: larger"><strong>POSITION  :  {{ HOD_pos }}</strong></label><br><br>
+    </div>
+</div>
+<div class="col-md-1">
+</div>
+<div class="col-md-5">
+<div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <p>
+            <a href="{% url 'request' %}" class="btn btn-sq-lg btn-primary">
+                <i class="fa fa-user fa-5x"></i><br/>
+                <br> REQUEST <br>TRAINING
+            </a>
+            <a href="{% url 'show' %}" class="btn btn-sq-lg btn-success">
+              <i class="fa fa-user fa-5x"></i><br/>
+              <br> VIEW <br>TRAINING
+            </a>
+            <a href="#" class="btn btn-sq-lg btn-info">
+              <i class="fa fa-user fa-5x"></i><br/>
+              <br> REQUEST <br> PENDING
+            </a>
+            </p>
+        </div>
+	</div>
+</div>
+</div>
+
+{% endblock %}
