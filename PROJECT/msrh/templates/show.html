@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+    #myInput {
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 100%; /* Full-width */
+    font-size: 20px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myTable {
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 15px; /* Increase font-size */
+    margin: auto;
+}
+
+#myTable th, #myTable td {
+    text-align: left; /* Left-align text */
+    padding: 12px;
+    border: 2px solid #000000   /* Add padding */
+}
+
+#myTable tr {
+    /* Add a bottom border to all table rows */
+    border: 2px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+    /* Add a grey background color to the table header and on hover */
+    background-color: #f1f1f1;
+    border: 2px solid #000000;
+}
+
+#myTable tr.header {
+    background-color: #1b4f72;
+    color: white;
+}
+
+.radio-inline-center {
+    font-size: 22px;
+    padding: 10px;
+}
+
+</style>
+
+    <script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, z, j;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  z = document.getElementsByName("optradio")
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+      for (j = 0; j < z.length; j++) {
+         if (z[j].checked) {
+          td = tr[i].getElementsByTagName("td")[j];
+          if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+              } else {
+                  tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+      }
+}
+</script>
+<div class="container">
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+<div id="hola" style="text-align: center">
+    <label class="radio-inline-center " style="font-size: 15px;">
+      <input type="radio" name="optradio" value="0">&nbsp;Name
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="1">&nbsp;Department
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="2">&nbsp;venue
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="3">&nbsp;Date
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="4">&nbsp;Time
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="5">&nbsp;Topic
+    </label>
+    <label class="radio-inline-center" style="font-size: 15px">
+      <input type="radio" name="optradio" value="6">&nbsp;Head Of Program
+    </label>
+
+</div>
+<table id="myTable">
+  <tr class="header">
+    <th style="width:10%;">Name</th>
+    <th style="width:10%;">Department</th>
+      <th style="width:10%;">venue</th>
+      <th style="width:10%;">Date</th>
+      <th style="width:10%;">Time</th>
+      <th style="width:10%;">Topic</th>
+      <th style="width:10%;">Head Of Program</th>
+  </tr>
+    {% for x in train %}
+  <tr>
+    <td>{{ x.name }}</td>
+    <td>{{ x.department }}</td>
+  <td>{{ x.venue }}</td>
+  <td>{{ x.date }}</td>
+  <td>{{ x.time }}</td>
+  <td>{{ x.topic }}</td>
+  <td>{{ x.head_of_program }}</td>
+  </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}

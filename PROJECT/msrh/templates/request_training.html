@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container" align="center" style="background-color: #a3e4d7; padding-bottom:20px; padding-top: 15px;"  >
+    <form method="post" action="{% url 'req_training' %}">
+        {% csrf_token %}
+      <h2 style="padding-bottom: 15px"><b>REQUEST TRAINING PROGRAM</b></h2>
+        <label style="font-size: medium"><strong>TRAINING NAME</strong><br>
+            <select class="form-control" name="tname">
+                {% for k in train %}
+                <option value="{{ k.name }}">{{ k.name }}</option>
+                {% endfor %}
+            </select>
+        </label><br><br>
+        <label style="font-size: medium"><strong>DEPARTMENT ORGANISING</strong><br>
+            <select class="form-control" name="tdept">
+                {% for h in dept %}
+                <option value="{{ h.name }}">{{ h.name }}</option>
+                {% endfor %}
+            </select>
+        </label><br><br>
+        <label style="font-size: medium"><strong>NO. OF EMPLOYEES</strong><br>
+            <input type="number" class="form-control" name="emp_count" required="" autofocus="" style="font-size: larger"/>
+        </label><br><br>
+        <label style="font-size: medium"><strong>EMPLOYEES</strong><br>
+            <select class="selectpicker" multiple name="emp" id="name{{ forloop.counter }}">
+                {% for h in emp %}
+                <option value="{{ h.Eid }}">{{ h.Eid }}</option>
+                {% endfor %}
+            </select>
+        </label><br><br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">REQUEST TRAINING</button>
+        <br>
+    </form>
+</div>
+
+
+{% endblock %}
